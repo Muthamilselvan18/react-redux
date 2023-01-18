@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import MyVerticallyCenteredModal from './Components/UpdateTask';
 
 function Tasklist() {
 
+  const [modalShow,setModalShow] = useState (false)
+
 const updateTask = () =>{
     console.log("Update task");
+    setModalShow(true)
 }
  const deleteTask = () =>{
     console.log("Delete Task");
  }
 
   return (
+    <>
     <Table striped bordered hover>
     <thead>
       <tr className='text-center'>
@@ -31,6 +36,11 @@ const updateTask = () =>{
       </tr>
     </tbody>
   </Table>
+    <MyVerticallyCenteredModal
+    show={modalShow}
+    onHide={() => setModalShow(false)}
+  />
+  </>
   )
 }
 
